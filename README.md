@@ -43,8 +43,7 @@ pyperclip >= 1.8.1
 
 1. When you are done making your flash cards, you are going to want to convert what the program outputs into something usable
 2. Open either `create_cards.py` or `create_cards.exe`
-3. The program will ask you if you want to create a PDF, or a CSV file. Choosing the PDF option will give you a pdf document of your flash cards that you can print right away
-Choosing the CSV file option will give you a .csv file that has your questions in one column and your answers in another column. This is useful if you want to use your flashcards in another program.
+3. The program will ask you if you want to create a PDF, or a CSV file. Choosing the PDF option will give you a pdf document of your flash cards that you can print right away. Choosing the CSV file option will give you a .csv file that has your questions in one column and your answers in another column. This is useful if you want to use your flashcards in another program.
 4. After choosing the output you want, press `enter`
 5. If you choose the PDF option, the program will put a document named `flashcards.pdf` in the `output` folder. By default, the program will automatically open the pdf for you.
 6. If you choose the CSV option, the program will put a document named `flashcards.csv` in the `output` folder. You can then use this csv file as you want.
