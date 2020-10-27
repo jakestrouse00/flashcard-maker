@@ -4,9 +4,24 @@ import pyperclip
 import json
 
 
+def readAndDump(textType: str, selectedText: str):
+    """
+
+    :param textType: The type of text. So either 'question' or 'answer'
+    :param selectedText: The text copied from the clipboard
+    """
+    with open('data/flashcards.json', 'r') as fp:
+        currentCards = json.load(fp)
+
+    currentCards[textType].append(selectedText)
+    with open('data/flashcards.json', 'w') as f:
+        json.dump(currentCards, f)
+    print(f"Wrote {selectedText} to {textType}")
+
+
 class Flashcards:
     def __init__(self):
-        pyperclip.copy('')
+        pyperclip.copy('')  # wipe the current clipboard contents
         self.switch = False
         self.askWipe()
 
@@ -19,34 +34,27 @@ class Flashcards:
         else:
             pass
 
-
-
-    def readAndDump(self, textType: str, selectedText: str):
-        with open('data/flashcards.json', 'r') as fp:
-            currentCards = json.load(fp)
-
-        currentCards[textType].append(selectedText)
-        with open('data/flashcards.json', 'w') as f:
-            json.dump(currentCards, f)
-        print(f"Wrote {selectedText} to {textType}")
-
     def getText(self):
+        # a bit confusing, but pyperclip.paste() copies the stuff in the clipboard, and pyperclip.copy() puts stuff in they clipboard
         data = pyperclip.paste()
         return data
 
     def waiter(self):
-        keyboard.wait('ctrl+c')
-        time.sleep(0.5)
+        keyboard.wait('ctrl+c')  # blocks until 'ctrl + c' (or the key combination for copying on windows) is pressed
+        time.sleep(0.5)  # I make it sleep for 0.5 seconds to make sure the text is copied by Windows before I try and get what is in the clipboard
         data = self.getText()
-
+        # just a basic switch that turns on/off to determine if the copied text is a question or answer
         if not self.switch:
-            self.readAndDump(textType='questions', selectedText=data)
+            readAndDump(textType='questions', selectedText=data)
             self.switch = True
         else:
-            self.readAndDump(textType='answers', selectedText=data)
+            readAndDump(textType='answers', selectedText=data)
             self.switch = False
 
     def start(self):
+        """
+        Since this is a 'while True' loop. The program needs to be manually closed for it to stop making flash cards.
+        """
         while True:
             self.waiter()
 
