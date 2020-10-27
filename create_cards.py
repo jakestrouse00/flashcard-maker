@@ -83,7 +83,7 @@ class Cards:
 if __name__ == '__main__':
     c = Cards()
     while True:
-        user_choice = input("Would you like to\n(1) Create CSV file\n(2) Create flashcards\n\nI would like to: ")
+        user_choice = input("Would you like to\n(1) Create CSV file\n(2) Create PDF\n\nI would like to: ")
         if user_choice == "1":
             c.writeCards()
             input("CSV file has been created. Press ENTER to exit...")

@@ -55,6 +55,7 @@ class Flashcards:
         """
         Since this is a 'while True' loop. The program needs to be manually closed for it to stop making flash cards.
         """
+        print("The program is now running!")
         while True:
             self.waiter()
 
