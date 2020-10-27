@@ -19,7 +19,7 @@ pyperclip >= 1.8.1
 
 ### Executable
 
-1. Download the release extract the files to your desktop
+1. Download the release and extract the files to your desktop
 
 
 
